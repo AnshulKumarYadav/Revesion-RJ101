@@ -1,0 +1,36 @@
+Question1.  https://leetcode.com/problems/big-countries
+Ans. SELECT name,population,area FROM world where area>=3000000 OR population>=25000000;
+
+Question2.  https://leetcode.com/problems/swap-salary/
+Ans. UPDATE  salary SET  sex = CASE WHEN sex = 'm' THEN 'f' ELSE 'm' END;
+
+Question3. https://leetcode.com/problems/not-boring-movies/
+Ans. SELECT id,movie,description,rating from cinema where id%2!=0 AND description != 'boring' order by rating desc
+
+Question4. https://leetcode.com/problems/duplicate-emails/
+Ans. SELECT email from person group by email having count(email) > 1
+
+Question5. https://leetcode.com/problems/combine-two-tables/
+Ans. SELECT p.firstName,p.lastName,a.city,a.state from person p Left Join address a using (personId); 
+
+Question6. https://leetcode.com/problems/employees-earning-more-than-their-managers/
+Ans. SELECT e.name as Employee from employee e Join employee m where e.managerId=m.id AND e.salary>m.salary;
+
+Question7. https://leetcode.com/problems/customers-who-never-order/
+Ans. SELECT c.name as Customers from customers c Left Join orders a ON c.id = a.customerId where a.customerId is NULL;
+
+Question8. https://leetcode.com/problems/delete-duplicate-emails
+Ans. DELETE p1 from Person as p1 INNER JOIN Person as p2 where p1.id > p2.id AND p1.email = p2.email;
+
+Question9. https://leetcode.com/problems/rising-temperature/
+Ans. SELECT w1.Id FROM weather w1, weather w2 WHERE DATEDIFF(w1.RecordDate, w2.RecordDate)=1 AND w1.Temperature > w2.Temperature;
+
+Question10. https://leetcode.com/problems/classes-more-than-5-students/
+Ans. SELECT class from courses group by class having count(class)>=5;
+
+Question11. https://leetcode.com/problems/second-highest-salary/
+Ans. SELECT
+    (SELECT DISTINCT Salary
+        FROM  Employee
+        ORDER BY Salary DESC
+        LIMIT 1 OFFSET 1) AS SecondHighestSalary
